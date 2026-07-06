@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %}Course Management System - Home{% endblock %}
+{% block content %}
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Learn Without Limits</h1>
+        <p>Discover courses, track your progress, and grow your skills — all in one beautifully simple place.</p>
+        <div class="hero-buttons">
+            <a href="{{ url_for('courses') }}" class="btn btn-primary">Browse Courses</a>
+            {% if not session.get('user_id') %}
+            <a href="{{ url_for('register') }}" class="btn btn-outline">Get Started</a>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<section class="stats">
+    <div class="stat-card">
+        <h2>{{ total_courses }}</h2>
+        <p>Courses Available</p>
+    </div>
+    <div class="stat-card">
+        <h2>{{ total_students }}</h2>
+        <p>Students Enrolled</p>
+    </div>
+    <div class="stat-card">
+        <h2>100%</h2>
+        <p>Satisfaction</p>
+    </div>
+</section>
+
+<section class="featured">
+    <h2 class="section-title">Featured Courses</h2>
+    <div class="course-grid">
+        {% for course in courses %}
+        <div class="course-card">
+            <div class="course-card-header">
+                <span class="course-category">{{ course.category }}</span>
+            </div>
+            <h3>{{ course.title }}</h3>
+            <p>{{ course.description }}</p>
+            <div class="course-meta">
+                <span>{{ course.duration }}</span>
+                <span>{{ course.instructor }}</span>
+            </div>
+            <a href="{{ url_for('courses') }}" class="btn btn-small">View Details</a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="benefits">
+    <h2 class="section-title">Why Choose Us</h2>
+    <div class="benefits-grid">
+        <div class="benefit-item">
+            <h3>Flexible Learning</h3>
+            <p>Learn at your own pace with courses designed around your schedule.</p>
+        </div>
+        <div class="benefit-item">
+            <h3>Track Progress</h3>
+            <p>Visual dashboards help you monitor your growth every step of the way.</p>
+        </div>
+        <div class="benefit-item">
+            <h3>Expert Instructors</h3>
+            <p>Learn from experienced instructors passionate about teaching.</p>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
