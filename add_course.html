@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Add Course - Course Management System{% endblock %}
+{% block content %}
+
+<section class="auth-section">
+    <div class="auth-card wide">
+        <h2>Add New Course</h2>
+        <p class="auth-subtitle">Fill in the course details below</p>
+
+        <form method="POST" action="{{ url_for('add_course') }}">
+            <div class="form-group">
+                <label for="title">Course Title</label>
+                <input type="text" id="title" name="title" required placeholder="e.g. Python for Beginners">
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" rows="4" required placeholder="Brief description of the course"></textarea>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="duration">Duration</label>
+                    <input type="text" id="duration" name="duration" required placeholder="e.g. 6 Weeks">
+                </div>
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <input type="text" id="category" name="category" required placeholder="e.g. Programming">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="instructor">Instructor</label>
+                <input type="text" id="instructor" name="instructor" required placeholder="e.g. Ms. Ananya Rao">
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">Add Course</button>
+            <a href="{{ url_for('admin_dashboard') }}" class="btn btn-outline btn-full">Cancel</a>
+        </form>
+    </div>
+</section>
+
+{% endblock %}
