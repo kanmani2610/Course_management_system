@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard - Course Management System{% endblock %}
+{% block content %}
+
+<section class="dashboard-header">
+    <h1>Admin Dashboard</h1>
+    <p>Manage courses, students, and enrollments</p>
+</section>
+
+<section class="dashboard-stats">
+    <div class="stat-card small">
+        <h2>{{ total_students }}</h2>
+        <p>Total Students</p>
+    </div>
+    <div class="stat-card small">
+        <h2>{{ total_courses }}</h2>
+        <p>Total Courses</p>
+    </div>
+    <div class="stat-card small">
+        <h2>{{ total_enrollments }}</h2>
+        <p>Total Enrollments</p>
+    </div>
+</section>
+
+<section class="admin-section">
+    <div class="admin-section-header">
+        <h2 class="section-title">Courses</h2>
+        <a href="{{ url_for('add_course') }}" class="btn btn-primary">+ Add Course</a>
+    </div>
+
+    <div class="table-wrap">
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Instructor</th>
+                    <th>Duration</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for course in courses %}
+                <tr>
+                    <td>{{ course.title }}</td>
+                    <td>{{ course.category }}</td>
+                    <td>{{ course.instructor }}</td>
+                    <td>{{ course.duration }}</td>
+                    <td class="actions">
+                        <a href="{{ url_for('edit_course', course_id=course.id) }}" class="btn-link">Edit</a>
+                        <a href="{{ url_for('delete_course', course_id=course.id) }}" class="btn-link btn-link-danger"
+                           onclick="return confirm('Delete this course? This cannot be undone.');">Delete</a>
+                    </td>
+                </tr>
+                {% else %}
+                <tr><td colspan="5" class="empty-state">No courses added yet.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section class="admin-section">
+    <h2 class="section-title">Students</h2>
+    <div class="table-wrap">
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Joined</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                <tr>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.email }}</td>
+                    <td>{{ student.created_at }}</td>
+                    <td class="actions">
+                        <a href="{{ url_for('delete_student', student_id=student.id) }}" class="btn-link btn-link-danger"
+                           onclick="return confirm('Remove this student? This cannot be undone.');">Remove</a>
+                    </td>
+                </tr>
+                {% else %}
+                <tr><td colspan="4" class="empty-state">No students registered yet.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section class="admin-section">
+    <h2 class="section-title">Enrollments</h2>
+    <div class="table-wrap">
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>Student</th>
+                    <th>Course</th>
+                    <th>Status</th>
+                    <th>Progress</th>
+                    <th>Enrolled On</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for e in enrollments %}
+                <tr>
+                    <td>{{ e.student_name }}<br><small>{{ e.student_email }}</small></td>
+                    <td>{{ e.course_title }}</td>
+                    <td><span class="status-badge status-{{ e.status|lower }}">{{ e.status }}</span></td>
+                    <td>{{ e.progress }}%</td>
+                    <td>{{ e.enrolled_date }}</td>
+                    <td class="actions">
+                        <a href="{{ url_for('delete_enrollment', enrollment_id=e.id) }}" class="btn-link btn-link-danger"
+                           onclick="return confirm('Remove this enrollment?');">Remove</a>
+                    </td>
+                </tr>
+                {% else %}
+                <tr><td colspan="6" class="empty-state">No enrollments yet.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+{% endblock %}
