@@ -1,17 +1,17 @@
 :root {
-  --primary: #4f46e5;
-  --primary-dark: #4338ca;
-  --accent: #06b6d4;
-  --bg: #f5f7fb;
+  --primary: #ec4899;
+  --primary-dark: #db2777;
+  --accent: #fb7185;
+  --bg: #fff5f9;
   --surface: #ffffff;
   --text: #1f2937;
   --muted: #6b7280;
-  --border: #e5e7eb;
+  --border: #fce7f3;
   --danger: #dc2626;
   --success: #16a34a;
   --radius: 14px;
-  --shadow: 0 10px 30px rgba(31, 41, 55, 0.08);
-  --shadow-sm: 0 2px 8px rgba(31, 41, 55, 0.08);
+  --shadow: 0 10px 30px rgba(236, 72, 153, 0.1);
+  --shadow-sm: 0 2px 8px rgba(236, 72, 153, 0.1);
 }
 
 *, *::before, *::after {
@@ -111,7 +111,7 @@ ul {
 
 .nav-links a:not(.btn):hover,
 .nav-links a:not(.btn).active {
-  background: #eef2ff;
+  background: #fdf2f8;
   color: var(--primary);
 }
 
@@ -179,8 +179,8 @@ ul {
 }
 
 .btn-light:hover {
-  background: #eef2ff;
-  border-color: #eef2ff;
+  background: #fdf2f8;
+  border-color: #fdf2f8;
   color: var(--primary-dark);
 }
 
@@ -197,7 +197,7 @@ ul {
 }
 
 .hero {
-  background: linear-gradient(135deg, var(--primary), #7c3aed 55%, var(--accent));
+  background: linear-gradient(135deg, var(--primary), #f472b6 55%, var(--accent));
   color: #fff;
   padding: 96px 0;
   text-align: center;
@@ -261,7 +261,7 @@ ul {
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 16px 36px rgba(79, 70, 229, 0.15);
+  box-shadow: 0 16px 36px rgba(236, 72, 153, 0.18);
 }
 
 .card h3 {
@@ -278,7 +278,7 @@ ul {
   width: 48px;
   height: 48px;
   border-radius: 12px;
-  background: #eef2ff;
+  background: #fdf2f8;
   display: grid;
   place-items: center;
   font-size: 1.4rem;
@@ -350,7 +350,7 @@ ul {
 .form-group select:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.12);
+  box-shadow: 0 0 0 4px rgba(236, 72, 153, 0.15);
 }
 
 .form-group.invalid input,
@@ -556,8 +556,8 @@ ul {
   display: inline-block;
   padding: 4px 10px;
   border-radius: 999px;
-  background: #eef2ff;
-  color: var(--primary);
+  background: #fdf2f8;
+  color: var(--primary-dark);
   font-size: 0.78rem;
   font-weight: 600;
 }
@@ -589,7 +589,7 @@ th, td {
 }
 
 th {
-  background: #f9fafb;
+  background: #fff5f9;
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -628,8 +628,8 @@ tr:last-child td {
 }
 
 .site-footer {
-  background: #111827;
-  color: #d1d5db;
+  background: #831843;
+  color: #fbcfe8;
   padding: 28px 0;
   text-align: center;
   font-size: 0.92rem;
