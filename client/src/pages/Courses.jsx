@@ -1,7 +1,8 @@
 import CourseCard from '../components/CourseCard';
+import EnrollButton from '../components/EnrollButton';
 import { courses } from '../data/courses';
 
-export default function Courses() {
+export default function Courses({ user, onUpdate }) {
   return (
     <main>
       <div className="container">
@@ -12,7 +13,9 @@ export default function Courses() {
         <div className="page-body">
           <div className="course-grid">
             {courses.map((course) => (
-              <CourseCard key={course.id} course={course} />
+              <CourseCard key={course.id} course={course}>
+                <EnrollButton user={user} courseId={course.id} onUpdate={onUpdate} />
+              </CourseCard>
             ))}
           </div>
         </div>

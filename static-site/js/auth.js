@@ -33,3 +33,17 @@ export function redirectIfLoggedIn() {
   }
   return false;
 }
+export async function enrollInCourse(userId, courseId) {
+  await wait(200);
+  const users = readUsers();
+  const user = users.find((u) => u.id === userId);
+  if (!user) {
+    throw new Error('User not found');
+  }
+  if (user.enrolled.includes(courseId)) {
+    throw new Error('You are already enrolled in this course');
+  }
+  user.enrolled.push(courseId);
+  localStorage.setItem(USERS_KEY, JSON.stringify(users));
+  return sanitize(user);
+}

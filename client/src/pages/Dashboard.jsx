@@ -1,7 +1,8 @@
 import CourseCard from '../components/CourseCard';
+import EnrollButton from '../components/EnrollButton';
 import { courses } from '../data/courses';
 
-export default function Dashboard({ user }) {
+export default function Dashboard({ user, onUpdate }) {
   const enrolledIds = user.enrolled || [];
   const enrolledCourses = courses.filter((course) => enrolledIds.includes(course.id));
 
@@ -33,7 +34,9 @@ export default function Dashboard({ user }) {
             <h2 className="panel-title">Available Courses</h2>
             <div className="course-grid">
               {courses.map((course) => (
-                <CourseCard key={course.id} course={course} />
+                <CourseCard key={course.id} course={course}>
+                  <EnrollButton user={user} courseId={course.id} onUpdate={onUpdate} />
+                </CourseCard>
               ))}
             </div>
             <h2 className="panel-title spaced">My Enrolled Courses</h2>
