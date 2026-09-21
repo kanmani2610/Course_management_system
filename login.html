@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduPortal | Login</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="login">
+<header class="site-header">
+  <nav class="navbar container">
+    <a href="index.html" class="brand">Edu<span>Portal</span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li data-auth="user"><a href="dashboard.html">Dashboard</a></li>
+      <li data-auth="guest"><a href="login.html" class="active">Login</a></li>
+      <li data-auth="guest"><a href="register.html" class="btn btn-small">Register</a></li>
+      <li data-auth="user"><button type="button" class="btn btn-small btn-outline" data-logout>Logout</button></li>
+    </ul>
+  </nav>
+</header>
+<main class="form-page">
+  <section class="form-card">
+    <h1>Welcome Back</h1>
+    <p class="sub">Login to access your student dashboard.</p>
+    <form id="loginForm" novalidate>
+      <div class="alert" hidden></div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email">
+        <small class="field-msg"></small>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" autocomplete="current-password">
+        <small class="field-msg"></small>
+      </div>
+      <button type="submit" class="btn btn-block">Login</button>
+    </form>
+    <p class="form-footer">New here? <a href="register.html">Create an account</a></p>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+    </div>
+    <p>&copy; 2026 EduPortal. All rights reserved.</p>
+  </div>
+</footer>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
