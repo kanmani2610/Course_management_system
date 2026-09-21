@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduPortal | Dashboard</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="dashboard">
+<header class="site-header">
+  <nav class="navbar container">
+    <a href="index.html" class="brand">Edu<span>Portal</span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li data-auth="user"><a href="dashboard.html" class="active">Dashboard</a></li>
+      <li data-auth="guest"><a href="login.html">Login</a></li>
+      <li data-auth="guest"><a href="register.html" class="btn btn-small">Register</a></li>
+      <li data-auth="user"><button type="button" class="btn btn-small btn-outline" data-logout>Logout</button></li>
+    </ul>
+  </nav>
+</header>
+<main class="dashboard">
+  <div class="container">
+    <div class="dash-head">
+      <h1 id="welcome">Student Dashboard</h1>
+      <p>Manage your profile and explore available courses.</p>
+    </div>
+    <div id="dashAlert" class="alert" hidden></div>
+    <div class="dash-layout">
+      <aside class="card profile" id="studentInfo"></aside>
+      <section>
+        <div class="stats" id="stats"></div>
+        <h2 class="panel-title">Available Courses</h2>
+        <div class="course-grid" id="courseGrid"></div>
+        <h2 class="panel-title spaced">My Enrolled Courses</h2>
+        <div class="table-wrap" id="enrolledTable"></div>
+      </section>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+    </div>
+    <p>&copy; 2026 EduPortal. All rights reserved.</p>
+  </div>
+</footer>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
