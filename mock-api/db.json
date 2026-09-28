@@ -1,0 +1,142 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Demo Student",
+      "email": "demo@eduportal.com",
+      "phone": "9876543210",
+      "department": "Computer Science",
+      "year": "3rd Year",
+      "password": "demo1234",
+      "role": "student"
+    },
+    {
+      "name": "KANMANI JAYAKUMAR",
+      "email": "kanmanijayakumar26022007@gmail.com",
+      "phone": "7904163848",
+      "department": "Computer Science",
+      "year": "4th Year",
+      "password": "Kanmani2610@.",
+      "role": "student",
+      "id": 2
+    },
+    {
+      "name": "claude",
+      "email": "claude@gmail.com",
+      "phone": "9876501234",
+      "department": "Electronics",
+      "year": "2nd Year",
+      "password": "Kanmani2610@.",
+      "role": "student",
+      "id": 3
+    }
+  ],
+  "courses": [
+    {
+      "id": 1,
+      "title": "Full Stack Web Development",
+      "description": "Build complete web apps with HTML, CSS, JavaScript, React, Node.js and MongoDB.",
+      "duration": "16 Weeks",
+      "level": "Intermediate",
+      "instructor": "Dr. Anitha Raj"
+    },
+    {
+      "id": 2,
+      "title": "Python for Data Science",
+      "description": "Learn Python, NumPy, Pandas and visualization to analyse real-world datasets.",
+      "duration": "10 Weeks",
+      "level": "Beginner",
+      "instructor": "Prof. Karthik S"
+    },
+    {
+      "id": 3,
+      "title": "Machine Learning Foundations",
+      "description": "Supervised and unsupervised learning, model evaluation and deployment basics.",
+      "duration": "12 Weeks",
+      "level": "Intermediate",
+      "instructor": "Dr. Meera Nair"
+    },
+    {
+      "id": 4,
+      "title": "Data Structures & Algorithms",
+      "description": "Master arrays, trees, graphs and dynamic programming for interviews.",
+      "duration": "14 Weeks",
+      "level": "Advanced",
+      "instructor": "Prof. Rahul V"
+    },
+    {
+      "id": 5,
+      "title": "UI/UX Design Essentials",
+      "description": "Design thinking, wireframing and prototyping for modern interfaces.",
+      "duration": "8 Weeks",
+      "level": "Beginner",
+      "instructor": "Ms. Divya P"
+    },
+    {
+      "id": 6,
+      "title": "Cloud Computing Basics",
+      "description": "Core cloud concepts, virtual machines, storage and serverless deployment.",
+      "duration": "9 Weeks",
+      "level": "Beginner",
+      "instructor": "Mr. Suresh K"
+    }
+  ],
+  "enrollments": [
+    {
+      "studentId": 2,
+      "courseId": 1,
+      "date": "2026-09-28T08:26:40.772Z",
+      "status": "Enrolled",
+      "id": 1
+    },
+    {
+      "studentId": 2,
+      "courseId": 3,
+      "date": "2026-09-28T08:26:42.705Z",
+      "status": "Enrolled",
+      "id": 2
+    },
+    {
+      "studentId": 2,
+      "courseId": 4,
+      "date": "2026-09-28T08:26:45.280Z",
+      "status": "Enrolled",
+      "id": 3
+    },
+    {
+      "studentId": 3,
+      "courseId": 3,
+      "date": "2026-09-28T08:29:12.200Z",
+      "status": "Enrolled",
+      "id": 4
+    },
+    {
+      "studentId": 3,
+      "courseId": 2,
+      "date": "2026-09-28T08:29:14.569Z",
+      "status": "Enrolled",
+      "id": 5
+    },
+    {
+      "studentId": 2,
+      "courseId": 2,
+      "date": "2026-09-28T08:29:59.117Z",
+      "status": "Enrolled",
+      "id": 6
+    },
+    {
+      "studentId": 2,
+      "courseId": 6,
+      "date": "2026-09-28T08:30:01.555Z",
+      "status": "Enrolled",
+      "id": 7
+    },
+    {
+      "studentId": 2,
+      "courseId": 5,
+      "date": "2026-09-28T08:30:02.271Z",
+      "status": "Enrolled",
+      "id": 8
+    }
+  ]
+}

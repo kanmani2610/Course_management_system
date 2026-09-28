@@ -1,10 +1,12 @@
 import CourseCard from '../components/CourseCard';
 import EnrollButton from '../components/EnrollButton';
-import { courses } from '../data/courses';
+import Alert from '../components/Alert';
+import { useAuth } from '../context/AuthContext';
+import { useCourses } from '../context/CourseContext';
 
-export default function Dashboard({ user, onUpdate }) {
-  const enrolledIds = user.enrolled || [];
-  const enrolledCourses = courses.filter((course) => enrolledIds.includes(course.id));
+export default function Dashboard() {
+  const { user } = useAuth();
+  const { courses, enrolledCourses, loading, error, reload } = useCourses();
 
   return (
     <main className="dashboard">
@@ -29,16 +31,25 @@ export default function Dashboard({ user, onUpdate }) {
             <div className="stats">
               <div className="stat"><strong>{courses.length}</strong><span>Available Courses</span></div>
               <div className="stat"><strong>{enrolledCourses.length}</strong><span>Enrolled</span></div>
-              <div className="stat"><strong>{courses.length - enrolledCourses.length}</strong><span>Remaining</span></div>
+              <div className="stat"><strong>{Math.max(courses.length - enrolledCourses.length, 0)}</strong><span>Remaining</span></div>
             </div>
             <h2 className="panel-title">Available Courses</h2>
-            <div className="course-grid">
-              {courses.map((course) => (
-                <CourseCard key={course.id} course={course}>
-                  <EnrollButton user={user} courseId={course.id} onUpdate={onUpdate} />
-                </CourseCard>
-              ))}
-            </div>
+            {loading && <p className="empty">Loading courses...</p>}
+            {error && (
+              <>
+                <Alert alert={{ type: 'error', message: error }} />
+                <button type="button" className="btn btn-small" onClick={reload}>Retry</button>
+              </>
+            )}
+            {!loading && !error && (
+              <div className="course-grid">
+                {courses.map((course) => (
+                  <CourseCard key={course.id} course={course}>
+                    <EnrollButton courseId={course.id} />
+                  </CourseCard>
+                ))}
+              </div>
+            )}
             <h2 className="panel-title spaced">My Enrolled Courses</h2>
             <div className="table-wrap">
               {enrolledCourses.length === 0 ? (
@@ -46,16 +57,16 @@ export default function Dashboard({ user, onUpdate }) {
               ) : (
                 <table>
                   <thead>
-                    <tr><th>#</th><th>Course</th><th>Duration</th><th>Instructor</th><th>Status</th></tr>
+                    <tr><th>#</th><th>Course</th><th>Instructor</th><th>Enrolled On</th><th>Status</th></tr>
                   </thead>
                   <tbody>
-                    {enrolledCourses.map((course, index) => (
-                      <tr key={course.id}>
+                    {enrolledCourses.map((item, index) => (
+                      <tr key={item.id}>
                         <td>{index + 1}</td>
-                        <td>{course.title}</td>
-                        <td>{course.duration}</td>
-                        <td>{course.instructor}</td>
-                        <td><span className="badge success">Enrolled</span></td>
+                        <td>{item.course.title}</td>
+                        <td>{item.course.instructor}</td>
+                        <td>{new Date(item.date).toLocaleDateString()}</td>
+                        <td><span className="badge success">{item.status}</span></td>
                       </tr>
                     ))}
                   </tbody>

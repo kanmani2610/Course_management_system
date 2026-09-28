@@ -1,23 +1,26 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { enrollInCourse } from '../utils/auth';
+import { useAuth } from '../context/AuthContext';
+import { useCourses } from '../context/CourseContext';
+import { getErrorMessage } from '../services/api';
 
-export default function EnrollButton({ user, courseId, onUpdate }) {
+export default function EnrollButton({ courseId }) {
+  const { user } = useAuth();
+  const { isEnrolled, enroll } = useCourses();
   const [loading, setLoading] = useState(false);
 
   if (!user) {
     return <Link to="/login" className="btn btn-small">Login to Enroll</Link>;
   }
 
-  const enrolled = (user.enrolled || []).includes(courseId);
+  const enrolled = isEnrolled(courseId);
 
   const handleClick = async () => {
     setLoading(true);
     try {
-      const updated = await enrollInCourse(user.id, courseId);
-      onUpdate(updated);
+      await enroll(courseId);
     } catch (error) {
-      window.alert(error.message);
+      window.alert(getErrorMessage(error));
     } finally {
       setLoading(false);
     }

@@ -4,13 +4,15 @@ import FormField from '../components/FormField';
 import Alert from '../components/Alert';
 import useForm from '../hooks/useForm';
 import { validateRegister } from '../utils/validation';
-import { registerUser } from '../utils/auth';
+import { useAuth } from '../context/AuthContext';
+import { getErrorMessage } from '../services/api';
 
 const departments = ['Computer Science', 'Information Technology', 'Electronics', 'Mechanical', 'Civil', 'Business'];
 const years = ['1st Year', '2nd Year', '3rd Year', '4th Year'];
 
 export default function Register() {
   const navigate = useNavigate();
+  const { register } = useAuth();
   const [alert, setAlert] = useState(null);
   const [loading, setLoading] = useState(false);
   const { values, isValid, touchAll, getFieldProps } = useForm(
@@ -30,11 +32,11 @@ export default function Register() {
 
     setLoading(true);
     try {
-      await registerUser(values);
+      await register(values);
       setAlert({ type: 'success', message: 'Registration successful! Redirecting to login...' });
       setTimeout(() => navigate('/login'), 900);
     } catch (error) {
-      setAlert({ type: 'error', message: error.message });
+      setAlert({ type: 'error', message: getErrorMessage(error) });
       setLoading(false);
     }
   };

@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -7,30 +6,20 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import Courses from './pages/Courses';
-import { getStoredUser, storeUser, clearUser } from './utils/auth';
+import { useAuth } from './context/AuthContext';
 
 export default function App() {
-  const [user, setUser] = useState(getStoredUser);
-
-  const handleLogin = (loggedInUser) => {
-    storeUser(loggedInUser);
-    setUser(loggedInUser);
-  };
-
-  const handleLogout = () => {
-    clearUser();
-    setUser(null);
-  };
+  const { user, logout } = useAuth();
 
   return (
     <>
-      <Navbar user={user} onLogout={handleLogout} />
+      <Navbar user={user} onLogout={logout} />
       <Routes>
         <Route path="/" element={<Home user={user} />} />
-        <Route path="/login" element={user ? <Navigate to="/dashboard" replace /> : <Login onLogin={handleLogin} />} />
+        <Route path="/login" element={user ? <Navigate to="/dashboard" replace /> : <Login />} />
         <Route path="/register" element={user ? <Navigate to="/dashboard" replace /> : <Register />} />
-        <Route path="/dashboard" element={user ? <Dashboard user={user} onUpdate={handleLogin} /> : <Navigate to="/login" replace />} />
-        <Route path="/courses" element={<Courses user={user} onUpdate={handleLogin} />} />
+        <Route path="/dashboard" element={user ? <Dashboard /> : <Navigate to="/login" replace />} />
+        <Route path="/courses" element={<Courses />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Footer />

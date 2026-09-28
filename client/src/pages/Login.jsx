@@ -4,10 +4,12 @@ import FormField from '../components/FormField';
 import Alert from '../components/Alert';
 import useForm from '../hooks/useForm';
 import { validateLogin } from '../utils/validation';
-import { loginUser } from '../utils/auth';
+import { useAuth } from '../context/AuthContext';
+import { getErrorMessage } from '../services/api';
 
-export default function Login({ onLogin }) {
+export default function Login() {
   const navigate = useNavigate();
+  const { login } = useAuth();
   const [alert, setAlert] = useState(null);
   const [loading, setLoading] = useState(false);
   const { values, isValid, touchAll, getFieldProps } = useForm(
@@ -27,11 +29,10 @@ export default function Login({ onLogin }) {
 
     setLoading(true);
     try {
-      const user = await loginUser(values.email, values.password);
-      onLogin(user);
+      await login(values.email, values.password);
       navigate('/dashboard');
     } catch (error) {
-      setAlert({ type: 'error', message: error.message });
+      setAlert({ type: 'error', message: getErrorMessage(error) });
       setLoading(false);
     }
   };
