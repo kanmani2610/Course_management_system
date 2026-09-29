@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -10,10 +10,12 @@ import { useAuth } from './context/AuthContext';
 
 export default function App() {
   const { user, logout } = useAuth();
+  const location = useLocation();
+  const isDashboard = location.pathname === '/dashboard';
 
   return (
     <>
-      <Navbar user={user} onLogout={logout} />
+      {!isDashboard && <Navbar user={user} onLogout={logout} />}
       <Routes>
         <Route path="/" element={<Home user={user} />} />
         <Route path="/login" element={user ? <Navigate to="/dashboard" replace /> : <Login />} />
@@ -22,7 +24,7 @@ export default function App() {
         <Route path="/courses" element={<Courses />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-      <Footer />
+      {!isDashboard && <Footer />}
     </>
   );
 }

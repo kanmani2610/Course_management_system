@@ -29,6 +29,16 @@
       "password": "Kanmani2610@.",
       "role": "student",
       "id": 3
+    },
+    {
+      "name": "ray",
+      "email": "rithika@gmail.com",
+      "phone": "8887776665",
+      "department": "Business",
+      "year": "3rd Year",
+      "password": "r34i12thika",
+      "role": "student",
+      "id": 4
     }
   ],
   "courses": [
@@ -137,6 +147,34 @@
       "date": "2026-09-28T08:30:02.271Z",
       "status": "Enrolled",
       "id": 8
+    },
+    {
+      "studentId": 4,
+      "courseId": 5,
+      "date": "2026-09-28T08:41:54.319Z",
+      "status": "Enrolled",
+      "id": 9
+    },
+    {
+      "studentId": 4,
+      "courseId": 1,
+      "date": "2026-09-28T08:41:59.800Z",
+      "status": "Enrolled",
+      "id": 10
+    },
+    {
+      "studentId": 4,
+      "courseId": 3,
+      "date": "2026-09-28T08:42:02.033Z",
+      "status": "Enrolled",
+      "id": 11
+    },
+    {
+      "studentId": 3,
+      "courseId": 6,
+      "date": "2026-09-29T05:23:18.486Z",
+      "status": "Enrolled",
+      "id": 12
     }
   ]
 }
